@@ -1,0 +1,46 @@
+{
+    "name": "splaceholder",
+    "title": "sPlaceholder",
+    "description": "",
+    "version": "1.2.0",
+    "homepage": "https://github.com/BiosSun/sPlaceholder",
+    "author": {
+        "name": "Bios Sun",
+        "email": "biossun@gmail.com",
+        "url": "http://biossun.org"
+    },
+    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:BiosSun/sPlaceholder.git"
+    },
+    "bugs": "https://github.com/BiosSun/sPlaceholder/issues",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/BiosSun/sPlaceholder/blob/master/LICENSE-MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": "*"
+    },
+    "scripts": {
+        "test": "grunt qunit"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-jshint": "~0.10.0",
+        "grunt-contrib-qunit": "~0.4.0",
+        "grunt-contrib-concat": "~0.4.0",
+        "grunt-contrib-uglify": "~0.4.0",
+        "grunt-contrib-watch": "~0.6.0",
+        "grunt-contrib-clean": "~0.5.0",
+
+        "karma": "~0.12.16",
+        "karma-coverage": "~0.2.1",
+        "karma-qunit": "~0.1.1",
+        "karma-chrome-launcher": "^0.1.3",
+        "karma-jasmine": "^0.1.5",
+        "karma-html2js-preprocessor": "~0.1"
+    }
+}

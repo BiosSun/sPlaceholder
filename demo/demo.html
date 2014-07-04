@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>DEMO 1</title>
+        <link type="text/css" rel="stylesheet" href="demo.css">
+    </head>
+    <body>
+        <p>一个普通文本框，没有占位符：</p>
+        <div>
+            <input class="ftext" type="text" id="text-0" />
+        </div>
+
+        <p>文本框为空值时，显示占位符：</p>
+        <div class="placeholder-box">
+            <label class="placeholder-text" for="text-1">placeholder text</label>
+            <input class="ftext" type="text" id="text-1" />
+        </div>
+
+        <p>文本框有值时，隐藏占位符：</p>
+        <div class="placeholder-box">
+            <label class="placeholder-text" for="text-2">placeholder text</label>
+            <input class="ftext" type="text" id="text-2" value="Bios Sun" />
+        </div>
+
+        <p>在页面加载后，会自动判断是要显示还是隐藏占位符：</p>
+        <div class="placeholder-box">
+            <label class="placeholder-text" for="text-3" style="display: none;">placeholder text</label>
+            <input class="ftext" type="text" id="text-3" value="Bios Sun" />
+        </div>
+
+        <p>可以不设置 placeholder-box 元素：</p>
+        <div class="field-box">
+            <label class="placeholder-text" for="text-4">placeholder text</label>
+            <input class="ftext" type="text" id="text-4" value="Bios Sun" />
+        </div>
+
+        <p>直接在文本框设置 placeholder，可在不支持 placeholder 的浏览器使用模拟效果：</p>
+        <div class="field-box">
+            <input class="ftext" type="text" id="text-5" placeholder="placeholder text" />
+            <input class="ftext" type="text" id="text-6" value="Bios Sun" placeholder="placeholder text" />
+        </div>
+
+        <p>通过添加 splaceholder 属性，可以在支持 placeholder 的浏览器中启用模拟效果：</p>
+        <div class="field-box">
+            <input class="ftext" type="text" id="text-7" placeholder="placeholder text" splaceholder />
+            <input class="ftext" type="text" id="text-8" value="Bios Sun" placeholder="placeholder text" splaceholder />
+        </div>
+
+    </body>
+</html>
+
+<script src="../libs/jquery/jquery.js"></script>
+<script src="../dist/splaceholder.js"></script>

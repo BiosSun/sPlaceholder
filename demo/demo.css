@@ -1,0 +1,52 @@
+body {
+    width: 700px;
+    margin: 40px auto;
+    background: #fff;
+}
+
+body, input {
+    font-family: arial,sans-serif;
+}
+
+.ftext {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #bbb;
+    background: transparent;
+    border-radius: 3px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666;
+
+    margin-bottom: 10px;
+}
+
+.ftext:focus {
+    border-color: #70c0ff;
+    outline: 0;
+    color: #444;
+}
+
+.field-box, .placeholder-box {
+    position: relative;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+
+.placeholder-text {
+    font-size: 14px;
+    line-height: 38px;
+    height: 38px;
+    position: absolute;
+    left: 9px;
+    top: 0;
+    color: #aaa;
+    cursor: text;
+    z-index: -1;
+}
+
+.placeholder-text-focus {
+    color: #ddd;
+}
