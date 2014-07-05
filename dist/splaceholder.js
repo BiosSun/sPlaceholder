@@ -342,6 +342,8 @@ sPlaceholder        = {
     },
 
     init: function(rootEl) {
+        rootEl = rootEl || document.body;
+
         var allTextbox = sPlaceholder.isTextbox(rootEl) ? [rootEl] : minilib.$t(['input', 'textarea'], rootEl),
             textbox, control, i, l;
 
@@ -449,7 +451,7 @@ minilib.ready(function() {
 
     // 初始化当前页面中所有占位符的显隐状态
     setTimeout(function() {
-        sPlaceholder.init(document.body);
+        sPlaceholder.init();
         sPlaceholder.isInit = true;
     }, 50);
 
