@@ -17,7 +17,7 @@ module.exports = function(config) {
         files: [
             'dist/splaceholder.js',
             'libs/jquery/jquery.js',
-            'test/splaceholder_test.js'
+            'test/test.js'
         ],
 
         // list of files to exclude
