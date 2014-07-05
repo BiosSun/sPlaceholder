@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>sPlaceholder DEMO Page</title>
+        <link type="text/css" rel="stylesheet" href="resource/doc.css">
+        <link href="resource/highlight/styles/solarized_light.css" rel="stylesheet">
+        <!--[if lte IE 8]>
+            <script type="text/javascript" src="resource/html5tags.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <h1>
+                    <strong>sP</strong><span>laceholder
+                        <span class="slogan">An HTML5 placeholder attribute analog</span>
+                    </span>
+                </h1>
+            </div>
+        </header>
+
+        <div class="main">
+            <p>
+                sPlaceholder 是一个用于模拟 HTML5 中 placeholder 属性的 JS 库，
+                可以提供更灵活、更强大的 placeholder 特效。
+            </p>
+
+            <h2>示例：</h2>
+
+            <p>一个普通文本框，没有占位符：</p>
+            <div class="field-box">
+                <input class="ftext" type="text" id="text-0" />
+                <a href="javascript:" class="J-show-code">show code</a>
+                <pre><code class="html">&lt;input type="text" /&gt;</code></pre>
+            </div>
+
+            <p>若给该文本框添加 placeholder 属性，sPlaceholder 会自动在不支持该属性的浏览器中应用模拟效果：</p>
+            <div class="field-box">
+                <input class="ftext" type="text" id="text-5" placeholder="placeholder text" />
+                <input class="ftext" type="text" id="text-6" value="Bios Sun" placeholder="placeholder text" />
+                <a href="javascript:" class="J-show-code">show code</a>
+                <pre><code class="html">&lt;input type="text" placeholder="placeholder text" /&gt;
+&lt;input type="text" placeholder="placeholder text" value="Bios Sun" /&gt;</code></pre>
+            </div>
+
+            <p>若希望在现代浏览器中也同样应用模拟效果，那么可以给该文本框添加一个 splaceholder 属性：</p>
+            <div class="field-box">
+                <input class="ftext" type="text" id="text-7" placeholder="placeholder text" splaceholder />
+                <input class="ftext" type="text" id="text-8" value="Bios Sun" placeholder="placeholder text" splaceholder />
+                <a href="javascript:" class="J-show-code">show code</a>
+                <pre><code class="html">&lt;input type="text" placeholder="placeholder text" splaceholder /&gt;
+&lt;input type="text" placeholder="placeholder text" splaceholder value="Bios Sun" /&gt;</code></pre>
+            </div>
+
+            <p>
+                如果需要更灵活的控制能力（比如使用一张图片作为占位符或为某些占位符应用一些特殊样式），
+                那么可以直接书写 placeholder 的模拟结构：
+            </p>
+            <div class="field-box">
+                <div class="placeholder-box">
+                    <label class="placeholder-text" for="text-1">placeholder text</label>
+                    <input class="ftext" type="text" id="text-1" />
+                </div>
+                <div class="placeholder-box">
+                    <label class="placeholder-text" for="text-1">placeholder text</label>
+                    <input class="ftext" type="text" id="text-1" value="Bios Sun" />
+                </div>
+                <a href="javascript:" class="J-show-code">show code</a>
+                <pre><code class="html">&lt;div class="placeholder-box"&gt;
+    &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
+    &lt;input type="text" /&gt;
+&lt;/div&gt;
+&lt;div class="placeholder-box"&gt;
+    &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
+    &lt;input type="text" value="Bios Sun" /&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <p>在上面的结构中，如果文本框和 placeholder 元素在同一级中，则可以不添加 placeholder-box 元素：</p>
+            <div class="field-box">
+                <div style="position: relative; margin-bottom: 7px;">
+                    <label class="placeholder-text">placeholder text</label>
+                    <input class="ftext" type="text" />
+                </div>
+                <div style="position: relative;">
+                    <label class="placeholder-text">placeholder text</label>
+                    <input class="ftext" type="text" value="Bios Sun" />
+                </div>
+                <a href="javascript:" class="J-show-code">show code</a>
+                <pre><code class="html">&lt;div style="position: relative; margin-bottom: 7px;"&gt;
+    &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
+    &lt;input type="text" /&gt;
+&lt;/div&gt;
+&lt;div style="position: relative;"&gt;
+    &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
+    &lt;input type="text" value="Bios Sun" /&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h2>初始化</h2>
+
+            <p>
+                在文档加载完毕后，sPlaceholder 会自动初始化当前文档内的所有文本框。
+                但对于文档加载后动态插入的内容，则不会自动初始化，此时则可以调用 <code>sPlaceholder.init()</code> 方法以进行初始化操作。
+            </p>
+
+            <h2>已知问题</h2>
+
+            <ol>
+                <li>如果占位符元素覆盖在文本框之上，这样在占位符上点击右键时，显示的不是文本框的操作菜单而是普通菜单。</li>
+                <li>若是通过 JS 改变文本框的值，占位符不会自动更新。(*)</li>
+                <li>我们没有判断 input 的类型，所以该模拟特效可能会运行在 checkbox 等不支持 placeholder 的元素上。</li>
+            </ol>
+
+        </div>
+    </body>
+</html>
+
+<script src="resource/jquery/jquery.min.js"></script>
+<script src="resource/splaceholder/splaceholder.min.js"></script>
+<script src="resource/doc.js"></script>
+
+<script src="http://yandex.st/highlightjs/7.2/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>

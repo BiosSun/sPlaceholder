@@ -1,0 +1,145 @@
+body {
+    background: #fff;
+    color: #333;
+    margin: 0 0 30px 0;
+    font-size: 14px;
+    line-height: 1.43;
+}
+
+body, input {
+    font-family: arial,sans-serif;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 30px 0 20px;
+    font-weight: 400;
+}
+
+ol, ul {
+    padding-left: 2em;
+    margin: 0;
+}
+
+header {
+    display: block;
+    padding: 0 0 110px 0;
+    margin: 70px 0;
+    border-bottom: 2px dashed #ccc;
+}
+
+header .header-inner, .main {
+    width: 740px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 84px;
+    line-height: 1.1;
+    font-weight: 300;
+    margin: 0;
+    color: #a9bda2;
+    text-align: center;
+}
+
+header h1 strong {
+    color: #a9bda2;
+    font-size: 200px;
+}
+
+header h1 span {
+    position: relative;
+}
+
+header .slogan {
+    font-size: 12px;
+    color: #c9c9c9;
+    line-height: 14px;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    bottom: -14px;
+}
+
+.ftext {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #bbb;
+    background: #fff;
+    border-radius: 3px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+}
+
+.ftext:focus {
+    border-color: #70c0ff;
+    outline: 0;
+}
+
+.field-box {
+    position: relative;
+    padding: 7px;
+    margin: -7px -7px 27px -7px;
+}
+
+.field-box .J-show-code {
+    position: absolute;
+    height: 38px;
+    line-height: 38px;
+    top: 7px;
+    right: 7px;
+    height: 38px;
+    white-space: pre;
+    text-decoration: none;
+    color: #fff;
+}
+
+.field-box:hover, .field-box-fixed {
+    background: #f9f9f9;
+}
+
+.field-box:hover .J-show-code,
+.field-box-fixed .J-show-code {
+    color: #ccc;
+}
+
+.field-box .J-show-code:hover {
+    color: #91C9DF;
+}
+
+pre {
+    margin: 7px -7px -7px -7px;
+    display: none;
+}
+
+pre code {
+    font-size: 12px;
+    padding: 16px 10px;
+    background: #f0f0f0;
+    display: block;
+}
+
+.placeholder-box {
+    position: relative;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+
+.placeholder-text {
+    font-size: 14px;
+    line-height: 38px;
+    height: 38px;
+    position: absolute;
+    left: 9px;
+    top: 0;
+    color: #aaa;
+    cursor: text;
+    z-index: 0;
+}
+
+.placeholder-text-focus {
+    color: #ddd;
+}

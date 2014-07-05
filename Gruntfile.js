@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
         clean: {
-            files: ['dist']
+            files: ['dist', 'doc/resource/splaceholder', 'doc/resource/jquery']
         },
         concat: {
             options: {
@@ -62,6 +62,28 @@ module.exports = function(grunt) {
                 src: ['test/**/*.js']
             }
         },
+        copy : {
+            dist : {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'dist/',
+                        src: ['**'],
+                        dest: 'doc/resource/splaceholder/'
+                    }
+                ]
+            },
+            jquery : {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'libs/jquery/',
+                        src: ['**'],
+                        dest: 'doc/resource/jquery/'
+                    }
+                ]
+            }
+        },
         watch: {
             gruntfile: {
                 files: '<%= jshint.gruntfile.src %>',
@@ -69,7 +91,7 @@ module.exports = function(grunt) {
             },
             src: {
                 files: 'src/**/*.js',
-                tasks: ['clean', 'concat', 'jshint:dist', 'uglify:dist']
+                tasks: ['clean', 'concat', 'jshint:dist', 'uglify:dist', 'copy:dist']
             },
             test: {
                 files: '<%= jshint.test.src %>',
@@ -85,8 +107,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-contrib-copy');
     // Default task.
-    grunt.registerTask('default', ['clean', 'concat', 'jshint', 'uglify']);
+    grunt.registerTask('default', ['clean', 'concat', 'jshint', 'uglify', 'copy']);
 
 };
