@@ -22,42 +22,41 @@
 
         <div class="main">
             <p>
-                sPlaceholder 是一个用于模拟 HTML5 中 placeholder 属性的 JS 库，
-                可以提供更灵活、更强大的 placeholder 特效。
+                sPlaceholder 是一个模拟 HTML5 中 placeholder 属性的 JS 库，
+                可以提供更加灵活的占位符特性。
             </p>
 
             <h2>示例：</h2>
 
-            <p>一个普通文本框，没有占位符：</p>
-            <div class="field-box">
+            <p>下面是一个普通文本框，我们以该结构为基础，为其添加占位符：</p>
+            <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-0" />
-                <a href="javascript:" class="J-show-code">show code</a>
+                <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;input type="text" /&gt;</code></pre>
             </div>
 
-            <p>若给该文本框添加 placeholder 属性，sPlaceholder 会自动在不支持该属性的浏览器中应用模拟效果：</p>
-            <div class="field-box">
+            <p>首先，如果只是需要在不支持占位符的浏览器中应用模拟效果，则直接给文本框添加 placeholder 属性既可。</p>
+            <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-5" placeholder="placeholder text" />
                 <input class="ftext" type="text" id="text-6" value="Bios Sun" placeholder="placeholder text" />
-                <a href="javascript:" class="J-show-code">show code</a>
+                <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;input type="text" placeholder="placeholder text" /&gt;
 &lt;input type="text" placeholder="placeholder text" value="Bios Sun" /&gt;</code></pre>
             </div>
 
-            <p>若希望在现代浏览器中也同样应用模拟效果，那么可以给该文本框添加一个 splaceholder 属性：</p>
-            <div class="field-box">
+            <p>若需要在所有浏览器中都应用模拟效果以统一交互，那么可以给该文本框添加一个 splaceholder 属性：</p>
+            <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-7" placeholder="placeholder text" splaceholder />
                 <input class="ftext" type="text" id="text-8" value="Bios Sun" placeholder="placeholder text" splaceholder />
-                <a href="javascript:" class="J-show-code">show code</a>
+                <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;input type="text" placeholder="placeholder text" splaceholder /&gt;
 &lt;input type="text" placeholder="placeholder text" splaceholder value="Bios Sun" /&gt;</code></pre>
             </div>
 
-            <p>
-                如果需要更灵活的控制能力（比如使用一张图片作为占位符或为某些占位符应用一些特殊样式），
-                那么可以直接书写 placeholder 的模拟结构：
+            <p>如果需要更灵活的控制能力，比如使用一张图片作为占位符或为某些占位符应用一些特殊样式，
+                则可以直接书写 placeholder 的模拟结构：
             </p>
-            <div class="field-box">
+            <div class="field-box field-box-fixed">
                 <div class="placeholder-box">
                     <label class="placeholder-text" for="text-1">placeholder text</label>
                     <input class="ftext" type="text" id="text-1" />
@@ -66,7 +65,7 @@
                     <label class="placeholder-text" for="text-1">placeholder text</label>
                     <input class="ftext" type="text" id="text-1" value="Bios Sun" />
                 </div>
-                <a href="javascript:" class="J-show-code">show code</a>
+                <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;div class="placeholder-box"&gt;
     &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
     &lt;input type="text" /&gt;
@@ -78,7 +77,7 @@
             </div>
 
             <p>在上面的结构中，如果文本框和 placeholder 元素在同一级中，则可以不添加 placeholder-box 元素：</p>
-            <div class="field-box">
+            <div class="field-box field-box-fixed">
                 <div style="position: relative; margin-bottom: 7px;">
                     <label class="placeholder-text">placeholder text</label>
                     <input class="ftext" type="text" />
@@ -87,7 +86,7 @@
                     <label class="placeholder-text">placeholder text</label>
                     <input class="ftext" type="text" value="Bios Sun" />
                 </div>
-                <a href="javascript:" class="J-show-code">show code</a>
+                <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;div style="position: relative; margin-bottom: 7px;"&gt;
     &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
     &lt;input type="text" /&gt;
