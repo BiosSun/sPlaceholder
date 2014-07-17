@@ -104,6 +104,32 @@
                 但对于文档加载后动态插入的内容，则不会自动初始化，此时则可以调用 <code>sPlaceholder.init()</code> 方法以进行初始化操作。
             </p>
 
+            <h2>样式</h2>
+
+            <p>
+                sPlaceholder 本身没有为占位符设置任何样式，所有样式都需要在 CSS 中定义。下面提供了一个基本样式示例以供参考：
+                <pre><code class="html">.placeholder-box {
+    position: relative;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+
+.placeholder-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+
+    color: #aaa;
+    cursor: text;
+}
+
+.placeholder-text-focus {
+    color: #ddd;
+}</code></pre>
+                        </p>
+
             <h2>已知问题</h2>
 
             <ol>
