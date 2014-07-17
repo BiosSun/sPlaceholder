@@ -1,6 +1,6 @@
 /*! sPlaceholder - v1.2.0 - 2014-07-17
-* https://github.com/BiosSun/sPlaceholder
-* Copyright (c) 2014 Bios Sun; Licensed MIT */
+ *  https://github.com/BiosSun/sPlaceholder
+ *  Copyright (c) 2014 Bios Sun; Licensed MIT */
 (function(global, factory) {
     var sPlaceholder = factory(window, document, undefined);
 
