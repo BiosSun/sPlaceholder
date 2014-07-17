@@ -13,7 +13,12 @@ module.exports = function(grunt) {
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
         clean: {
-            files: ['dist', 'doc/resource/splaceholder', 'doc/resource/jquery']
+            dist: {
+                src: ['dist', 'doc/resource/splaceholder']
+            },
+            jquery: {
+                src: ['doc/resource/jquery']
+            }
         },
         concat: {
             options: {
@@ -91,7 +96,7 @@ module.exports = function(grunt) {
             },
             src: {
                 files: 'src/**/*.js',
-                tasks: ['clean', 'concat', 'jshint:dist', 'uglify:dist', 'copy:dist']
+                tasks: ['clean:dist', 'concat', 'jshint:dist', 'uglify:dist', 'copy:dist']
             },
             test: {
                 files: '<%= jshint.test.src %>',
