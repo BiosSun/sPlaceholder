@@ -1,8 +1,10 @@
 (function(global, factory) {
+    var sPlaceholder = factory(window, document, undefined);
+
     if (typeof module === 'object' && module.exports === 'object') {
-        module.exports = factory();
+        module.exports = sPlaceholder;
     }
     else {
-        global.sPlaceholder = factory();
+        global.sPlaceholder = sPlaceholder;
     }
-})(typeof window !== "undefined" ? window : this, function() {
+})(typeof window !== "undefined" ? window : this, function(window, document, undefined) {

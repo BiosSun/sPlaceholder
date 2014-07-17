@@ -1,14 +1,16 @@
-/*! sPlaceholder - v1.2.0 - 2014-07-05
+/*! sPlaceholder - v1.2.0 - 2014-07-17
 * https://github.com/BiosSun/sPlaceholder
 * Copyright (c) 2014 Bios Sun; Licensed MIT */
 (function(global, factory) {
+    var sPlaceholder = factory(window, document, undefined);
+
     if (typeof module === 'object' && module.exports === 'object') {
-        module.exports = factory();
+        module.exports = sPlaceholder;
     }
     else {
-        global.sPlaceholder = factory();
+        global.sPlaceholder = sPlaceholder;
     }
-})(typeof window !== "undefined" ? window : this, function() {
+})(typeof window !== "undefined" ? window : this, function(window, document, undefined) {
 
 var minilib = (function() {
 
@@ -22,34 +24,6 @@ var minilib = (function() {
     exel = document.createElement('a'),
 
     minilib = {
-        // 逐个将多个源对象中的非 undefined 值的属性复制到目标对象中（浅拷贝）；
-        // 如果只有一个目标对象，则使用该对象扩展本库。
-        extend: function() {
-            var target = arguments[0],
-                length = arguments.length,
-                i = 1,
-                source, name, srcv;
-
-            if (length === 1) {
-                target = minilib;
-                i = 0;
-            }
-
-            for (; i < length; i++) {
-                source = arguments[i];
-                if (source != null) {
-                    for (name in source) {
-                        srcv = source[name];
-                        if (srcv !== undefined) {
-                            target[name] = srcv;
-                        }
-                    }
-                }
-            }
-
-            return target;
-        },
-
         makeArray: function(arrayLikeObj) {
             var ret, i , l;
 
@@ -67,12 +41,10 @@ var minilib = (function() {
             }
 
             return ret;
-        }
-    };
+        },
 
-    // 类型检查模块
-    // ---------------------------
-    minilib.extend({
+        // 类型检查模块
+        // ---------------------------
         isArray : function(obj) {
             return _toStr.call(obj) === '[object Array]';
         },
@@ -83,48 +55,40 @@ var minilib = (function() {
 
         isString : function(obj) {
             return typeof obj === 'string';
-        }
-    });
+        },
 
-    // 样式获取模块
-    // ---------------------------
-    minilib.extend({
+        // 样式获取模块
+        // ---------------------------
         css : window.getComputedStyle ?
             function(el, name) {
                 return window.getComputedStyle(el, null)[name];
             } :
             function(el, name) {
                 return el.currentStyle[name];
-            }
-    });
+            },
 
-    // 元素状态监测模块
-    // ---------------------------
-    minilib.extend({
+        // 元素状态监测模块
+        // ---------------------------
         isFocus: function(el) {
             return el === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(el.type || el.href || ~el.tabIndex);
         },
 
         isHidden: function(el) {
             return minilib.css(el, 'display') === 'none';
-        }
-    });
+        },
 
-    // 显示、隐藏元素
-    // ---------------------------
-    minilib.extend({
+        // 显示、隐藏元素
+        // ---------------------------
         show: function(el) {
             el.style.display = '';
         },
 
         hide: function(el) {
             el.style.display = 'none';
-        }
-    });
+        },
 
-    // class 操作模块
-    // ---------------------------
-    minilib.extend({
+        // class 操作模块
+        // ---------------------------
         hasClass: function(el, val) {
             return (' ' + el.className.replace(_rsg, ' ') + ' ').indexOf(' ' + val + ' ') > -1;
         },
@@ -142,12 +106,10 @@ var minilib = (function() {
             if (className !== newClassName) {
                 el.className = newClassName;
             }
-        }
-    });
+        },
 
-    // 元素查询模块
-    // ---------------------------
-    minilib.extend({
+        // 元素查询模块
+        // ---------------------------
         $ : function(id) {
             return document.getElementById(id);
         },
@@ -211,51 +173,44 @@ var minilib = (function() {
             }
 
             return ret;
-        }
-    });
+        },
 
-    // DOM 操作模块
-    // ---------------------------
-    minilib.extend({
+        // DOM 操作模块
+        // ---------------------------
         create: function(htmlStr) {
             var root = document.createElement('div');
             root.innerHTML = htmlStr;
             return root.childNodes[0];
-        }
-    });
+        },
 
-    // 事件绑定模块
-    // ---------------------------
-    minilib.extend(exel.addEventListener ?
-                   {
-                       on : function(node, type, listener) {
-                           node.addEventListener(type, listener, false);
-                       },
-                       off : function(node, type, listener) {
-                           node.removeEventListener(type, listener, false);
-                       }
-                   } :
-                   {
-                       on : function (node, type, listener) {
-                           node['e' + type + listener] = listener;
-                           node[type + listener] = function() {
-                               var e = window.event;
-                               e.target = e.srcElement;
-                               node['e' + type + listener](e);
-                           };
-                           node.attachEvent('on' + type, node[type + listener]);
-                       },
-                       off : function(node, type, listener) {
-                           node.detachEvent('on' + type, node[type + listener]);
-                           node[type + listener] = null;
-                           node['e' + type + listener] = null;
-                       }
-                   }
-                  );
+        // 事件绑定模块
+        // ---------------------------
+        on: exel.addEventListener ?
+            function(node, type, listener) {
+                node.addEventListener(type, listener, false);
+            } :
+            function (node, type, listener) {
+                node['e' + type + listener] = listener;
+                node[type + listener] = function() {
+                    var e = window.event;
+                    e.target = e.srcElement;
+                    node['e' + type + listener](e);
+                };
+                node.attachEvent('on' + type, node[type + listener]);
+            },
 
-    // DOM Loaded 事件模块
-    // ---------------------------
-    minilib.extend({
+        off: exel.addEventListener ?
+            function(node, type, listener) {
+                node.removeEventListener(type, listener, false);
+            } :
+            function(node, type, listener) {
+                node.detachEvent('on' + type, node[type + listener]);
+                node[type + listener] = null;
+                node['e' + type + listener] = null;
+            },
+
+        // DOM Loaded 事件模块
+        // ---------------------------
         isReady : false,
         readyList : [],
         readyTimer : null,
@@ -292,7 +247,7 @@ var minilib = (function() {
 
             return false;
         }
-    });
+    };
 
     return minilib;
 })();
