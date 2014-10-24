@@ -3,7 +3,7 @@ body {
     color: #333;
     margin: 0 0 30px 0;
     font-size: 14px;
-    line-height: 1.43;
+    line-height: 1.7;
 }
 
 body, input {
@@ -29,7 +29,7 @@ header {
 }
 
 header .header-inner, .main {
-    width: 740px;
+    width: 777px;
     margin: 0 auto;
 }
 
@@ -109,15 +109,19 @@ header .slogan {
     color: #91C9DF;
 }
 
-pre {
+.field-box pre {
     margin: 7px -7px -7px -7px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+pre {
+    border-radius: 3px;
+    overflow: auto;
 }
 
 pre code {
     font-size: 12px;
-    padding: 16px 10px;
-    background: #f0f0f0;
-    display: block;
 }
 
 .placeholder-box {
@@ -141,4 +145,17 @@ pre code {
 
 .placeholder-text-focus {
     color: #ddd;
+}
+
+.ui-tipbar {
+    border-color: #c4ebf3;
+    background: #d9edf7;
+    color: #3a87ad;
+}
+
+.ui-tipbar a {
+    color: #3a87ad;
+    font-weight: 700;
+    text-decoration: underline;
+    padding: 0 2px;
 }
