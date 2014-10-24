@@ -1,12 +1,13 @@
 var
 
-box_class           = 'placeholder-box',
-text_class          = 'placeholder-text',
-text_focus_class    = text_class + '-focus',
-
 isSuportPlaceholder = 'placeholder' in document.createElement('input'),
 
 sPlaceholder        = {
+
+    // 类名配置
+    boxClass: 'placeholder-box',
+    textClass: 'placeholder-text',
+    textFocusClass: 'placeholder-text-focus',
 
     // 是否在页面加载后进行全局初始化
     globalInit: true,
@@ -16,7 +17,7 @@ sPlaceholder        = {
 
         if (control[1]) {
             sPlaceholder.bind(control);
-            minilib.addClass(control[1], text_focus_class);
+            minilib.addClass(control[1], sPlaceholder.textFocusClass);
         }
     },
 
@@ -26,7 +27,7 @@ sPlaceholder        = {
         sPlaceholder.changePlaceholderState(control[0], control[1]);
         sPlaceholder.unbind(control);
 
-        minilib.removeClass(control[1], text_focus_class);
+        minilib.removeClass(control[1], sPlaceholder.textFocusClass);
     },
 
     modifyHandler: function(e) {
@@ -70,8 +71,8 @@ sPlaceholder        = {
             sp = e.getAttribute('splaceholder');
 
         if (pt && (!isSuportPlaceholder || sp != null)) {
-            var placeholderBox = minilib.create('<div class="' + box_class + '"></div>'),
-                placeholder    = minilib.create('<label class="' + text_class + '">' + pt + '</label>');
+            var placeholderBox = minilib.create('<div class="' + sPlaceholder.boxClass + '"></div>'),
+                placeholder    = minilib.create('<label class="' + sPlaceholder.textClass + '">' + pt + '</label>');
 
             e.parentNode.insertBefore(placeholderBox, e);
             placeholderBox.appendChild(placeholder);
@@ -91,7 +92,7 @@ sPlaceholder        = {
     },
 
     isPlaceholder: function(el) {
-        return minilib.hasClass(el, text_class);
+        return minilib.hasClass(el, sPlaceholder.textClass);
     },
 
     changePlaceholderState: function(textbox, placeholder) {
@@ -102,7 +103,7 @@ sPlaceholder        = {
 
     getPlaceholderBox: function(el) {
         var p_box = minilib.closest(el, function(el) {
-            return minilib.hasClass(el, box_class);
+            return minilib.hasClass(el, sPlaceholder.boxClass);
         });
 
         return p_box;
@@ -114,7 +115,7 @@ sPlaceholder        = {
         if (sPlaceholder.isTextbox(el)) {
             e = el;
             b = sPlaceholder.getPlaceholderBox(e);
-            t = b ? minilib.$c(text_class, b)[0] : minilib.siblings(e, function(el) { return sPlaceholder.isPlaceholder(el); })[0];
+            t = b ? minilib.$c(sPlaceholder.textClass, b)[0] : minilib.siblings(e, function(el) { return sPlaceholder.isPlaceholder(el); })[0];
         }
         else if (sPlaceholder.isPlaceholder(el)) {
             t = el;
