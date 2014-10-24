@@ -22,20 +22,67 @@
 
         <div class="main">
             <p>
-                sPlaceholder 是一个模拟 HTML5 中 placeholder 属性的 JS 库，
-                可以提供更加灵活的占位符特性。
+                sPlaceholder 是一个模拟 HTML5 中的 placeholder 属性的 JS 库，
+                通过它可以实现更加灵活的占位符特性。
             </p>
 
-            <h2>示例：</h2>
+            <h2>快速开始</h2>
 
-            <p>下面是一个普通文本框，我们以该结构为基础，为其添加占位符：</p>
+            <p>首先，在你的页面中引入 sPlaceholder 的脚本文件，并添加一个含有占位符的文本框：</p>
+            <pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang="zh_CN"&gt;
+    &lt;head&gt;
+        &lt;title&gt;sPlaceholder Demo&lt;/title&gt;
+        &lt;script class="http://biossun.org/sPlaceholder/resource/splaceholder/splaceholder.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;input type="text" placeholder="placeholder" /&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <p>然后，当你在打开这个页面时，sPlacehoder 便会在不支持占位符的浏览器中自动为文本框添加占位符，而在这个过程中，sPlacehoder 会清除文本框的 placeholder 属性，并在文本框的周围添加两个新的元素 —— <code>placeholder-box</code> 和 <code>placeholder-text</code>：</p>
+
+                <pre><code class="html">&lt;div class="placeholder-box"&gt;
+    &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
+    &lt;input type="text" /&gt;
+&lt;/div&gt;</code></pre>
+
+            <p>如上所示，我们使用了两个元素来模拟占位符的效果，那么为了让它看起来像一个占位符（比如将文字覆盖在文本框中并且有较淡的文字颜色等），我们需要给它设置一些样式，不过遗憾的是， sPlaceholer 并没有为你提供任何样式，因为我们希望完全由你来为你的文本框设置占位符样式，当然为了尽快让你完成这项工作，我们还是在下面给出了一份较为通用的样式，你可以通过修改（或扩展）它来得到自己所需要的最终样式：</p>
+
+            <pre><code class="html">.placeholder-box {
+    position: relative;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+
+.placeholder-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+
+    color: #aaa;
+    cursor: text;
+}
+
+/* 当文本框得到焦点时会为 .placeholder-text 元素添加这个 class */
+.placeholder-text-focus {
+    color: #ddd;
+}</code></pre>
+
+            <p>OK，现在你已经学会了 sPlaceholer 的基本使用方法，如果你还想实现一些更棒的功能，那么请继续看下去吧。</p>
+
+            <h2>详细说明：</h2>
+
+            <p>下面是一个普通的文本框，我们将以该结构为基础，为你详细讲解 sPlaceholer 的使用方式：</p>
             <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-0" />
                 <a href="javascript:" class="J-show-code">hide code</a>
                 <pre><code class="html">&lt;input type="text" /&gt;</code></pre>
             </div>
 
-            <p>首先，如果只是需要在不支持占位符的浏览器中应用模拟效果，则直接给文本框添加 placeholder 属性既可。</p>
+            <p>首先，如果只是需要在不支持占位符的浏览器中应用模拟效果，则直接给文本框添加 placeholder 属性既可：</p>
             <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-5" placeholder="placeholder text" />
                 <input class="ftext" type="text" id="text-6" value="Bios Sun" placeholder="placeholder text" />
@@ -44,7 +91,7 @@
 &lt;input type="text" placeholder="placeholder text" value="Bios Sun" /&gt;</code></pre>
             </div>
 
-            <p>若需要在所有浏览器中都应用模拟效果以统一交互，那么可以给该文本框添加一个 splaceholder 属性：</p>
+            <p>而如果需要在所有浏览器中都应用模拟占位符以便得到一致的视觉及交互，那么可以给该文本框添加一个 splaceholder 属性：</p>
             <div class="field-box field-box-fixed">
                 <input class="ftext" type="text" id="text-7" placeholder="placeholder text" splaceholder />
                 <input class="ftext" type="text" id="text-8" value="Bios Sun" placeholder="placeholder text" splaceholder />
@@ -53,7 +100,7 @@
 &lt;input type="text" placeholder="placeholder text" splaceholder value="Bios Sun" /&gt;</code></pre>
             </div>
 
-            <p>如果需要更灵活的控制能力，比如使用一张图片作为占位符或为某些占位符应用一些特殊样式，
+            <p>此外，如果需要更灵活的控制能力，比如使用一张图片作为占位符或为某些占位符应用一些特殊样式，
                 则可以直接书写 placeholder 的模拟结构：
             </p>
             <div class="field-box field-box-fixed">
@@ -99,36 +146,8 @@
 
             <h2>初始化</h2>
 
-            <p>
-                在文档加载完毕后，sPlaceholder 会自动初始化当前文档内的所有文本框。
-                但对于文档加载后动态插入的内容，则不会自动初始化，此时则可以调用 <code>sPlaceholder.init()</code> 方法以进行初始化操作。
-            </p>
-
-            <h2>样式</h2>
-
-            <p>
-                sPlaceholder 本身没有为占位符设置任何样式，所有样式都需要在 CSS 中定义。下面提供了一个基本样式示例以供参考：
-                <pre><code class="html">.placeholder-box {
-    position: relative;
-    display: inline-block;
-    *zoom: 1;
-    *display: inline;
-}
-
-.placeholder-text {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 0;
-
-    color: #aaa;
-    cursor: text;
-}
-
-.placeholder-text-focus {
-    color: #ddd;
-}</code></pre>
-                        </p>
+            <p>在文档加载完毕后，sPlaceholder 会自动初始化当前文档内的所有文本框。</p>
+            <p>但对于文档加载后动态插入的内容，则无法自动对其初始化，此时便需要调用 <code>sPlaceholder.init()</code> 方法以进行初始化操作。</p>
 
             <h2>已知问题</h2>
 
