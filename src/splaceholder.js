@@ -7,6 +7,10 @@ text_focus_class    = text_class + '-focus',
 isSuportPlaceholder = 'placeholder' in document.createElement('input'),
 
 sPlaceholder        = {
+
+    // 是否在页面加载后进行全局初始化
+    globalInit: true,
+
     focusHandler: function(e) {
         var control = sPlaceholder.getControl(e.target);
 
@@ -152,8 +156,10 @@ minilib.ready(function() {
 
     // 初始化当前页面中所有占位符的显隐状态
     setTimeout(function() {
-        sPlaceholder.init();
-        sPlaceholder.isInit = true;
+        if (sPlaceholder.globalInit) {
+            sPlaceholder.init();
+            sPlaceholder.isInit = true;
+        }
     }, 50);
 
 });

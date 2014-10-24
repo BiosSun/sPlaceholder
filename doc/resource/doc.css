@@ -61,6 +61,24 @@ header .slogan {
     bottom: -14px;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+}
+
+table th,
+table td {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    padding: 0.7em;
+}
+
+table th {
+    background: #f0f0f0;
+}
+
 .ftext {
     width: 300px;
     padding: 8px;
