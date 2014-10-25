@@ -23,7 +23,7 @@
         <div class="main">
             <p>
                 sPlaceholder 是一个模拟 HTML5 中的 placeholder 属性的 JS 库，
-                通过它可以实现更加灵活的占位符特性。
+                通过它可以解决某些浏览器不支持占位符的问题，同时也可以实现更加灵活的占位符特性。
             </p>
 
             <h2>快速开始</h2>
@@ -40,14 +40,14 @@
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-            <p>然后，当你在打开这个页面时，sPlacehoder 便会在不支持占位符的浏览器中自动为文本框添加占位符，而在这个过程中，sPlacehoder 会清除文本框的 placeholder 属性，并在文本框的周围添加两个新的元素 —— <code>placeholder-box</code> 和 <code>placeholder-text</code>：</p>
+            <p>接着，当在浏览器中加载这个页面时，sPlacehoder 便会在不支持占位符的浏览器中自动为文本框添加一个『模拟占位符』，而在这个过程中，会清除文本框的 placeholder 属性，并在其周围添加两个新的元素 —— <code>.placeholder-box</code> 和 <code>.placeholder-text</code>：</p>
 
                 <pre><code class="html">&lt;div class="placeholder-box"&gt;
     &lt;label class="placeholder-text"&gt;placeholder text&lt;/label&gt;
     &lt;input type="text" /&gt;
 &lt;/div&gt;</code></pre>
 
-            <p>如上所示，我们使用了两个元素来模拟占位符的效果，那么为了让它看起来像一个占位符（比如将文字覆盖在文本框中并且有较淡的文字颜色等），我们需要给它设置一些样式，不过遗憾的是， sPlaceholer 并没有为你提供任何样式，因为我们希望完全由你来为你的文本框设置占位符样式，当然为了尽快让你完成这项工作，我们还是在下面给出了一份较为通用的样式，你可以通过修改（或扩展）它来得到自己所需要的最终样式：</p>
+            <p>如上所示，我们使用了两个元素来模拟实现占位符的效果，但光添加元素是不够的，还得为这些元素设置样式（比如将文字覆盖在文本框上并设置一个较淡的文字颜色等）；但遗憾的是， sPlaceholer 并没有提供任何样式，因为我们希望完全由你来为自己的文本框设置占位符样式，不过为了尽快让你完成这项工作，我们还是在下面给出了一份较为通用的样式，你可以通过修改（或扩展）它来得到自己所需要的：</p>
 
             <pre><code class="html">.placeholder-box {
     position: relative;
@@ -58,7 +58,7 @@
 
 .placeholder-text {
     position: absolute;
-    left: 0;
+    left: 2px;
     top: 0;
     z-index: 0;
 
@@ -66,7 +66,7 @@
     cursor: text;
 }
 
-/* 当文本框得到焦点时会为 .placeholder-text 元素添加这个 class */
+/* 当文本框得到焦点时的占位符样式 */
 .placeholder-text-focus {
     color: #ddd;
 }</code></pre>
