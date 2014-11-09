@@ -1,0 +1,21 @@
+{
+  "name": "splaceholder",
+  "version": "1.2.16",
+  "homepage": "https://github.com/BiosSun/sPlaceholder",
+  "authors": [
+    "Bios Sun <biossun@gmail.com>"
+  ],
+  "description": "sPlaceholder 是一个模拟 HTML5 中的 placeholder 属性的 JS 库， 通过它可以实现更加灵活的占位符特性。",
+  "main": "dist/splaceholder.js",
+  "keywords": [
+    "placeholder"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -4,6 +4,14 @@ sPlaceholder 是一个模拟 HTML5 中的 placeholder 属性的 JS 库， 通过
 
 详细文档：http://biossun.org/sPlaceholder/
 
+## 安装
+
+如果你使用 bower，可以执行如下命令来安装 sPlaceholder：
+
+```shell
+$ bower install splaceholder --save
+```
+
 ## 示例
 
 ```html
