@@ -1,4 +1,4 @@
-/*! sPlaceholder - v1.2.16 - 2014-10-25
+/*! sPlaceholder - v1.2.17 - 2014-11-09
  *  https://github.com/BiosSun/sPlaceholder
  *  Copyright (c) 2014 Bios Sun; Licensed MIT */
 (function(global, factory) {
